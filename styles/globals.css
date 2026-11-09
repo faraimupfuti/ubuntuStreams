@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 221 83% 53%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.animate-in {
+  animation: animate-in 0.5s ease-out;
+}
+
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Broadcast theme: paper + ink + tally red; colour bars as the signature ---- */
+:root {
+  --background: 220 36% 94%;
+  --foreground: 226 64% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 226 64% 14%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 226 64% 14%;
+  --primary: 3 79% 54%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 30% 89%;
+  --secondary-foreground: 226 64% 14%;
+  --muted: 220 30% 89%;
+  --muted-foreground: 226 20% 36%;
+  --accent: 220 30% 89%;
+  --accent-foreground: 226 64% 14%;
+  --border: 222 28% 80%;
+  --input: 222 28% 80%;
+  --ring: 3 79% 54%;
+  --radius: 0.75rem;
+}
+.theater {
+  --background: 226 62% 7%;
+  --foreground: 220 30% 96%;
+  --card: 226 55% 11%;
+  --card-foreground: 220 30% 96%;
+  --muted: 226 42% 16%;
+  --muted-foreground: 222 20% 72%;
+  --border: 226 35% 22%;
+  --input: 226 35% 22%;
+}
+html body { font-family: var(--font-body), system-ui, sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
+.font-display { font-family: var(--font-display), system-ui, sans-serif; letter-spacing: -0.03em; }
+.bars {
+  background: linear-gradient(90deg, #f7c948 0 14.28%, #35b7d8 0 28.56%, #3dbe7a 0 42.84%, #c9439b 0 57.12%, #e8362d 0 71.4%, #3b5bdb 0 85.68%, #0f1a3a 0);
+}
+.tuning {
+  background: linear-gradient(90deg, #f7c948 0 14.28%, #35b7d8 0 28.56%, #3dbe7a 0 42.84%, #c9439b 0 57.12%, #e8362d 0 71.4%, #3b5bdb 0 85.68%, #fff 0);
+}
+.tuning::after {
+  content: ""; position: absolute; inset: 0; opacity: .35;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.55) 0 2px, transparent 2px 4px);
+}
+@keyframes eq { 0%,100% { transform: scaleY(.25) } 50% { transform: scaleY(1) } }
+@keyframes bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
+@keyframes tick { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+.eq span { transform-origin: bottom; animation: eq 1s ease-in-out infinite; }
+.bob { animation: bob 1.6s ease-in-out infinite; }
+.ticker { animation: tick 14s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .eq span, .bob, .ticker { animation: none !important; } }
+:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 2px; }
